@@ -117,13 +117,15 @@ module.exports.register = function (swig, opts) {
 };
 ```
 
-
-
 ## Related projects
 
+* [sublime-swig](https://github.com/jonschlinkert/sublime-swig) syntax highlight for Swig Templates, in Sublime Text.
+* [sublime-monokai-extended](https://github.com/jonschlinkert/sublime-monokai-extended)
+* [sublime-markdown-extended](https://github.com/jonschlinkert/sublime-markdown-extended)
 * [assemble](http://github.com/assemble) (see the [live docs](http://assemble.io))
 * [assemble-swig](http://github.com/assemble/assemble-swig)
 * [assemble-swig-examples](http://github.com/assemble/assemble-swig-examples)
+
 
 
 ## Copyright and license
