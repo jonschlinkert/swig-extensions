@@ -18,47 +18,26 @@ module.exports = function (grunt) {
 
   grunt.registerTask('templates', 'Generate repo documentation and core files.', function () {
     var path = require('path');
+    var meta = grunt.file.readJSON('package.json');
     var asset = path.join.bind(null, __dirname, 'assets');
 
-    var meta = grunt.file.readJSON('package.json');
-
-    var authors = grunt.file.read('AUTHORS');
-    meta.authors = authors.split('\n').map(function (author) {
-      var matches = author.match(/(.*?)\s*\((.*)\)/) || [];
-      return {
-        name: matches[1],
-        url: matches[2]
-      };
-    });
-
-
     // Generate index.js for filters
-    var filters = grunt.file.read(asset('filters.tmpl'));
-    var filtersFiles = grunt.file.expand('lib/filters/*.js');
-    filtersFiles = filtersFiles.map(function (filepath) {
-      return path.basename(filepath, '.js');
-    });
-    meta.filtersFiles = _.pull(filtersFiles, 'index');
-    var filterIndex = grunt.template.process(filters, {
-      data: meta,
-      delimiters: 'templates'
-    });
-    grunt.file.write('lib/filters/index.js', filterIndex);
-
-
-    // Generate index.js for tags
-    var tags = grunt.file.read(asset('tags.tmpl'));
-    var tagsFiles = grunt.file.expand('lib/tags/*.js');
-    tagsFiles = tagsFiles.map(function (filepath) {
-      return path.basename(filepath, '.js');
-    });
-    meta.tagsFiles = _.pull(tagsFiles, 'index');
-    var tagIndex = grunt.template.process(tags, {
-      data: meta,
-      delimiters: 'templates'
-    });
-    grunt.file.write('lib/tags/index.js', tagIndex);
-
+    function makeIndex(file) {
+      var index = grunt.file.read(asset('index.tmpl'));
+      var indexFiles = grunt.file.expand('lib/' + file + '/*.js');
+      indexFiles = indexFiles.map(function (filepath) {
+        return path.basename(filepath, '.js');
+      });
+      meta.dir = file;
+      meta.indexFiles = _.pull(indexFiles, 'index');
+      var processIndex = grunt.template.process(index, {
+        data: meta,
+        delimiters: 'templates'
+      });
+      grunt.file.write('lib/'+ file + '/index.js', processIndex.replace(/\\/g, ''));
+    }
+    makeIndex('filters');
+    makeIndex('tags');
 
     // Fail task if any errors were logged.
     if (this.errorCount > 0) {

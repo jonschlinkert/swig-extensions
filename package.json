@@ -11,6 +11,16 @@
     "name": "Jon Schlinkert",
     "url": "http://github.com/jonschlinkert"
   },
+  "contributors": [
+    {
+      "name": "Jon Schlinkert",
+      "url": "http://github.com/jonschlinkert"
+    },
+    {
+      "name": "Brian Woodward",
+      "url": "http://github.com/doowb"
+    }
+  ],
   "licenses": [
     {
       "type": "MIT",
