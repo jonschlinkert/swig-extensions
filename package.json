@@ -1,0 +1,47 @@
+{
+  "name": "swig-extensions",
+  "version": "0.1.0",
+  "description": "A growing collection of tags and filters for Swig Templates.",
+  "homepage": "https://github.com/assemble/swig-extensions",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:helpers/swig-extensions.git"
+  },
+  "author": {
+    "name": "Jon Schlinkert",
+    "url": "http://github.com/jonschlinkert"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/assemble/swig-extensions/blob/master/LICENSE-MIT"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/helpers/swig-extensions/issues"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "js-beautify": "~1.4.0",
+    "lodash": "~2.0.0",
+    "marked": "~0.2.9",
+    "matchdep": "~0.1.2",
+    "nodelint": "~0.6.2"
+  },
+  "keywords": [
+    "assemble",
+    "static site generator",
+    "swig filters",
+    "swig tags",
+    "swig",
+    "tags",
+    "templates"
+  ],
+  "devDependencies": {
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt": "~0.4.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-uglify": "~0.2.4",
+    "grunt-contrib-jshint": "~0.6.4"
+  }
+}
