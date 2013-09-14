@@ -1,9 +1,5 @@
-/*
- * templates
- * http://assemble.io/
- *
- * Credit: based on grunt-contrib-internal
- * Copyright (c) 2013 Jon Schlinkert, contributors
+/**
+ * Copyright (c) 2013, Jon Schlinkert, contributors
  * Licensed under the MIT license.
  */
 
@@ -16,7 +12,7 @@ module.exports = function (grunt) {
   // Add custom template delimiters.
   grunt.template.addDelimiters('templates', '{%', '%}');
 
-  grunt.registerTask('templates', 'Generate repo documentation and core files.', function () {
+  grunt.registerTask('templates', 'Generate index.js files for filters and tags.', function () {
     var path = require('path');
     var meta = grunt.file.readJSON('package.json');
     var asset = path.join.bind(null, __dirname, 'assets');
@@ -28,14 +24,16 @@ module.exports = function (grunt) {
       indexFiles = indexFiles.map(function (filepath) {
         return path.basename(filepath, '.js');
       });
-      meta.dir = file;
+      meta.type = file;
       meta.indexFiles = _.pull(indexFiles, 'index');
       var processIndex = grunt.template.process(index, {
         data: meta,
         delimiters: 'templates'
       });
       grunt.file.write('lib/'+ file + '/index.js', processIndex.replace(/\\/g, ''));
+      grunt.log.ok('Generating index.js for ' + file + '.');
     }
+
     makeIndex('filters');
     makeIndex('tags');
 
