@@ -126,9 +126,9 @@ module.exports.register = function (swig, opts) {
 * [assemble-swig-examples](http://github.com/assemble/assemble-swig-examples)
 
 
-## License
+## Copyright and license
 
+Copyright (c) 2013 Jon Schlinkert, Brian Woodward, contributors
 Licensed under the [MIT License](./LICENSE-MIT) (MIT)
 
-Copyright (c) 2013 Jon Schlinkert
 
