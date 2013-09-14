@@ -1,12 +1,7 @@
-// From https://github.com/paularmstrong/swig-extras
+exports.utils = require('./lib/utils');
 
 /**
- * Raw filter methods.
- * @type {object}
- */
-exports.filters = require('./lib/filters');
-
-/**
+ * From https://github.com/paularmstrong/swig-extras
  * Add an extensions filter to your swig instance.
  *
  * @example
@@ -20,23 +15,15 @@ exports.filters = require('./lib/filters');
  * @throws {Error} If extensions does not have a filter with the given name.
  */
 exports.useFilter = function (swig, filter) {
-  var f = exports.filters[filter];
+  var f = require('./lib/filters')[filter];
   if (!f) {
     throw new Error('Filter "' + filter + '" does not exist.');
   }
   swig.setFilter(filter, f);
 };
 
-
-
-
 /**
- * Raw tag objects.
- * @type {object}
- */
-exports.tags = require('./lib/tags');
-
-/**
+ * From https://github.com/paularmstrong/swig-extras
  * Add an extensions tag to your swig instance.
  *
  * @example
@@ -51,7 +38,7 @@ exports.tags = require('./lib/tags');
  * @throws {Error} If extensions does not have a tag with the given name.
  */
 exports.useTag = function (swig, tag) {
-  var t = exports.tags[tag];
+  var t = require('./lib/tags')[tag];
   if (!t) {
     throw new Error('Tag "' + tag + '" does not exist.');
   }
