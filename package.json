@@ -36,6 +36,7 @@
     "lodash": "~2.0.0",
     "marked": "~0.2.9",
     "matchdep": "~0.1.2",
+    "highlight.js":"~8.0.0",
     "nodelint": "~0.6.2"
   },
   "keywords": [
